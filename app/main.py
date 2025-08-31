@@ -6,6 +6,7 @@ from contextlib import asynccontextmanager
 from app.core.config import settings
 from app.core.logging import get_logger, setup_logging
 from app.api.routes import health
+from app.api.routes import predictions
 from app.core.exceptions import CustomException
 
 # Setup logging 
@@ -63,6 +64,7 @@ def create_application() -> FastAPI:
     
     # Include routers
     app.include_router(health.router, prefix = settings.api_prefix, tags = ["health"])
+    app.include_router(predictions.router, prefix = settings.api_prefix, tags = ["predictions"])
 
     return app 
 
