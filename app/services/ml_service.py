@@ -128,3 +128,5 @@ class MLModelService:
                 "status": "unhealthy", 
                 "error": str(e) 
             }
+        
+ml_service = MLModelService() 
