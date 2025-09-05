@@ -58,3 +58,7 @@ htmlcov/
 
 # Docker
 .dockerignore
+
+# ML models
+checkpoints/
+data/

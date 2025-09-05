@@ -1,5 +1,6 @@
+from pathlib import Path
 from pydantic_settings import BaseSettings
-from typing import Optional
+from typing import Optional, ClassVar
 
 class Settings(BaseSettings):
     # Application settings
@@ -24,8 +25,9 @@ class Settings(BaseSettings):
     redis_ttl: int = 3000 
 
     # Ml model settings
-    model_path: str = "/workspace/app/models/ml_models/checkpoints/model.pkl"
-    vectorizer_path: str = "/workspace/app/models/ml_models/checkpoints/vectorizer.pkl"
+    BASE_DIR: ClassVar[Path] = Path(__file__).resolve().parent.parent
+    model_path: str = str(BASE_DIR / "models/ml_models/checkpoints/model.pkl")
+    vectorizer_path: str = str(BASE_DIR / "models/ml_models/checkpoints/vectorizer.pkl")
     model_threshold: float = 0.5
 
     class Config:
